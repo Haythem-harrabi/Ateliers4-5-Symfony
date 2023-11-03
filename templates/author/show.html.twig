@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="{{ asset('css/styles.css') }}" />
+<form method="POST" action="/AuthorSearchdql">
+<label for="minNumber">Min Number</label>
+<input type="number" name="minNumber"/>
+<label for="maxNumber">Max Number</label>
+<input type="number" name="maxNumber"/>
+<input type="submit" value="search">
+</form>
+<h1> Authors list </h1>
+<table>
+<tr>  <th> Username </th> <th> Email </th><th> NB books </th> <th> Actions </th></tr>
+{% for t in response %}
+<tr>
+<td>{{t.username}} </td> <td>{{t.email}} </td><td>{{t.nbbooks}} </td><td><a href={{ path('updateF',  {'id' : t.id}) }}> Edit</a> <a href={{ path('remove',  {'id' : t.id}) }}> Delete </a></td>
+</tr>
+{% endfor %}
+</table>
